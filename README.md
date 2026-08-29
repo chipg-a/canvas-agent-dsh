@@ -1,4 +1,4 @@
-# canvas-agent
+# canvas-agent-dsh
 
 基于 [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) v0.1.0-rc.5 的**画布式 Agent 交互层**：把 DSH 的线性聊天界面升级为「画布即交互界面」——节点画布、任务拆解建议、工作流可视化执行、定时调度，全部以 DSH 原生能力为底座，只换交互形态，不阉割任何功能。
 
