@@ -1,0 +1,33 @@
+canvas-agent — 画布式 Agent 交互层（基于 deepseek-harness 的二开 overlay）
+
+Copyright (C) 2026  canvas-agent contributors
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+SPDX-License-Identifier: GPL-3.0-only
+
+The full license text is published at
+https://www.gnu.org/licenses/gpl-3.0.txt — distributions should
+include a copy of it alongside this notice.
+
+---
+
+NOTICE — upstream software
+
+This overlay is built on top of deepseek-harness v0.1.0-rc.5,
+Copyright (c) 2026 DeepSeek, licensed under the MIT License.
+Upstream source code is NOT included in this repository; obtain it
+from the official deepseek-harness repository. The upstream MIT
+license text applies to any upstream code you combine with this
+overlay; see the deepseek-harness repository for the full text.
