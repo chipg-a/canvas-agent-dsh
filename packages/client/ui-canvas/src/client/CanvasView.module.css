@@ -1,0 +1,956 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  flex-wrap: wrap;
+}
+
+.tool {
+  padding: 4px 10px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 6px;
+  background: var(--dsw-alias-surface, #fff);
+  color: var(--dsw-alias-text-primary, #1f2933);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tool:hover {
+  background: var(--dsw-alias-fill-subtle, #f1f5f9);
+}
+
+/* Batch operations bar shown while nodes are box-selected. */
+.batchBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  background: var(--dsw-static-blue-50, #eff6ff);
+}
+
+.batchLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dsw-static-blue-700, #1d4ed8);
+  margin-right: 4px;
+}
+
+.title {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dsw-alias-text-primary, #1f2933);
+}
+
+.meta {
+  font-size: 12px;
+  color: var(--dsw-alias-text-tertiary, #6b7280);
+}
+
+.hint {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--dsw-alias-text-tertiary, #94a3b8);
+}
+
+.workspace {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ---- outline ---- */
+.outline {
+  width: 220px;
+  min-width: 180px;
+  border-right: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--dsw-alias-surface, #fff);
+}
+
+.outlineHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dsw-alias-text-secondary, #374151);
+}
+
+.outlineMatchCount {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--dsw-static-blue-500, #4176e6);
+}
+
+.search {
+  margin: 0 8px 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.outlineBody {
+  flex: 1;
+  overflow: auto;
+  padding: 0 6px 8px;
+}
+
+.outlineBranch {
+  position: relative;
+  margin-left: 14px;
+  padding-left: 6px;
+  border-left: 1px solid var(--dsw-alias-border-subtle, #eef1f5);
+}
+
+.outlineRowWrap {
+  display: flex;
+  align-items: center;
+  min-height: 30px;
+}
+
+.outlineTwisty {
+  flex: none;
+  width: 18px;
+  margin-left: -4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 9px;
+  color: var(--dsw-alias-text-tertiary, #94a3b8);
+  padding: 0;
+}
+
+.outlineRow {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 6px 8px;
+  border: none;
+  border-left: 3px solid transparent;
+  border-radius: 0 6px 6px 0;
+  background: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--dsw-alias-text-primary, #1f2933);
+  text-align: left;
+}
+
+.outlineRow:hover {
+  background: var(--dsw-alias-fill-subtle, #f1f5f9);
+}
+
+.outlineRow[data-selected] {
+  background: var(--dsw-static-blue-50, #eff6ff);
+  border-left-color: var(--dsw-static-blue-500, #3b82f6);
+}
+
+.outlineRow[data-matched] .outlineText {
+  color: var(--dsw-static-blue-600, #2563eb);
+  font-weight: 600;
+}
+
+.outlineRow[data-dimmed] {
+  opacity: 0.45;
+}
+
+.outlineGroup {
+  margin-bottom: 10px;
+}
+
+.outlineGroupHead {
+  padding: 6px 10px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dsw-alias-text-tertiary, #94a3b8);
+}
+
+.outlineGlyph {
+  font-size: 10px;
+  color: var(--dsw-static-blue-500, #4176e6);
+}
+
+.outlineText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.outlineId {
+  color: var(--dsw-alias-text-tertiary, #94a3b8);
+  font-size: 10px;
+}
+
+.outlineFold {
+  padding: 6px 8px;
+  font-size: 11px;
+  color: var(--dsw-alias-text-tertiary, #94a3b8);
+}
+
+/* ---- canvas ---- */
+.canvasArea {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  cursor: grab;
+  background: var(--dsw-alias-canvas, #f8fafd);
+}
+
+.canvasLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas {
+  display: block;
+  background: transparent;
+}
+
+.cardSelected :global(g) {
+  cursor: pointer;
+}
+
+/* Card action bar (confirm/pin/remove/rename on the card itself). */
+.cardActionBar {
+  pointer-events: all;
+}
+
+.cardActionBtn,
+.cardActionDanger {
+  cursor: pointer;
+  color: var(--dsw-alias-text-secondary, #4b5563);
+}
+
+.cardActionBtn rect,
+.cardActionDanger rect {
+  fill: rgba(255, 255, 255, 0.96);
+  stroke: var(--dsw-alias-border, #d1d5db);
+  stroke-width: 1;
+}
+
+.cardActionBtn:hover {
+  color: var(--dsw-static-blue-600, #2563eb);
+}
+
+.cardActionBtn:hover rect {
+  stroke: var(--dsw-static-blue-500, #3b82f6);
+  fill: var(--dsw-static-blue-50, #eff6ff);
+}
+
+.cardActionDanger:hover {
+  color: var(--dsw-static-red-600, #dc2626);
+}
+
+.cardActionDanger:hover rect {
+  stroke: var(--dsw-static-red-500, #ef4444);
+  fill: var(--dsw-static-red-50, #fef2f2);
+}
+
+/* Inline node-rename input floating under the card. */
+.renamePop {
+  position: absolute;
+  z-index: 6;
+}
+
+.renamePop input {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 12px;
+  padding: 4px 6px;
+  border: 1px solid var(--dsw-static-blue-500, #3b82f6);
+  border-radius: 6px;
+  background: var(--dsw-alias-surface, #fff);
+  color: var(--dsw-alias-text-primary, #1f2933);
+  outline: none;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.12);
+}
+
+/* Running-session card: blue glow breathing around the border. */
+.cardRunning {
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--dsw-static-blue-500, #3b82f6) 45%, transparent));
+  animation: canvasCardBreath 1.8s ease-in-out infinite;
+}
+
+@keyframes canvasCardBreath {
+  0%, 100% { filter: drop-shadow(0 0 3px color-mix(in srgb, var(--dsw-static-blue-500, #3b82f6) 30%, transparent)); }
+  50% { filter: drop-shadow(0 0 8px color-mix(in srgb, var(--dsw-static-blue-500, #3b82f6) 55%, transparent)); }
+}
+
+/* Breathing status dot on a running card. */
+.cardDotRunning {
+  fill: var(--dsw-static-blue-500, #3b82f6);
+  animation: canvasDotPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes canvasDotPulse {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 1; }
+}
+
+/* Locate flash: the targeted card pulses its border twice. */
+.cardFlash {
+  animation: canvasCardFlash 0.9s ease-out;
+}
+
+@keyframes canvasCardFlash {
+  0%, 100% { stroke: var(--dsw-static-amber-500, #f59e0b); stroke-width: 2.5; }
+  40% { stroke: var(--dsw-static-blue-500, #3b82f6); stroke-width: 4; }
+}
+
+/* Running-card progress fill: sweeps across the track on a loop. */
+.cardProgressFill {
+  transform-origin: left center;
+  animation: canvasProgress 2s ease-in-out infinite;
+}
+
+@keyframes canvasProgress {
+  0% { transform: scaleX(0); opacity: 0.9; }
+  60% { transform: scaleX(0.85); opacity: 1; }
+  100% { transform: scaleX(0); opacity: 0.6; }
+}
+
+/* Search-matched card: soft amber fill so hits pop on the canvas. */
+.cardMatched {
+  fill: color-mix(in srgb, var(--dsw-static-amber-100, #fef3c7) 55%, var(--dsw-alias-surface, #fff));
+}
+
+/* Workflow-plan placeholder card: muted dashed frame, faint fill. */
+.cardPlan {
+  fill: color-mix(in srgb, var(--dsw-alias-fill-subtle, #f1f5f9) 60%, var(--dsw-alias-surface, #fff));
+  opacity: 0.85;
+}
+
+/* Waiting-for-input card: amber breathing frame so the user notices. */
+.cardWaiting {
+  animation: canvasCardWait 1.6s ease-in-out infinite;
+}
+
+@keyframes canvasCardWait {
+  0%, 100% { filter: drop-shadow(0 0 2px color-mix(in srgb, var(--dsw-static-amber-500, #f59e0b) 25%, transparent)); }
+  50% { filter: drop-shadow(0 0 7px color-mix(in srgb, var(--dsw-static-amber-500, #f59e0b) 55%, transparent)); }
+}
+
+.empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dsw-alias-text-tertiary, #6b7280);
+  font-size: 13px;
+  pointer-events: none;
+}
+
+/* Pending question takeover surfaced in the right rail, directly above the
+   native composer: the bottom composer seat (where the question composer
+   renders) is hidden while the canvas tab is active, so the question card
+   sits at the input point instead of floating over the canvas. */
+.questionCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 10px 0;
+  padding: 12px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 12px;
+  background: var(--dsw-alias-surface, #fff);
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.10);
+}
+
+.questionHead {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dsw-alias-text-primary, #1f2933);
+}
+
+.questionItem {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.questionText {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--dsw-alias-text-primary, #1f2933);
+}
+
+.questionOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.questionOption {
+  padding: 4px 10px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 999px;
+  background: none;
+  color: var(--dsw-alias-text-secondary, #374151);
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.questionOption:hover {
+  background: var(--dsw-alias-fill-subtle, #f1f5f9);
+}
+
+.questionOptionSelected {
+  background: var(--dsw-static-blue-50, #eff6ff);
+  border-color: var(--dsw-static-blue-500, #3b82f6);
+  color: var(--dsw-static-blue-800, #1e40af);
+}
+
+.questionInput {
+  padding: 6px 8px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 8px;
+  background: var(--dsw-alias-surface, #fff);
+  color: var(--dsw-alias-text-primary, #1f2933);
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.questionInput:focus {
+  outline: 2px solid var(--dsw-static-blue-500, #3b82f6);
+  outline-offset: 1px;
+}
+
+.questionActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.suggestBadge {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 5;  padding: 7px 12px;
+  border: 1px solid var(--dsw-static-blue-300, #93c5fd);
+  border-radius: 999px;
+  background: var(--dsw-static-blue-50, #eff6ff);
+  color: var(--dsw-static-blue-600, #2557c9);
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.12);
+}
+
+.suggestBadge:hover {
+  filter: brightness(1.03);
+}
+
+/* Floating canvas tools: fit / zoom, bottom-right above the suggestion badge. */
+.canvasTools {
+  position: absolute;
+  right: 14px;
+  bottom: 54px;
+  z-index: 5;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  border-radius: 10px;
+  background: var(--dsw-alias-surface, #fff);
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.10);
+}
+
+.toolBtn {
+  min-width: 28px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 7px;
+  background: none;
+  color: var(--dsw-alias-text-secondary, #374151);
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.toolBtn:hover {
+  background: var(--dsw-alias-fill-subtle, #f1f5f9);
+}
+
+/* ---- inspector ---- */
+.inspector {
+  width: 420px;
+  min-width: 320px;
+  border-left: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  background: var(--dsw-alias-surface, #fff);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Rail collapsed via the toolbar toggle: the whole right rail (details +
+   native composer) hides so the canvas takes the full column width. */
+.inspectorCollapsed {
+  display: none;
+}
+
+.inspectorBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+  overflow: auto;
+  flex: 1;
+}
+
+.inspectorHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inspectorTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dsw-alias-text-primary, #1f2933);
+}
+
+.inspectorClose {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--dsw-alias-text-tertiary, #6b7280);
+}
+
+.inspectorMeta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 11px;
+  color: var(--dsw-alias-text-tertiary, #6b7280);
+  flex-wrap: wrap;
+}
+
+.inspectorBadge {
+  padding: 1px 8px;
+  border-radius: 10px;
+  background: var(--dsw-static-blue-50, #eff6ff);
+  color: var(--dsw-static-blue-800, #1e40af);
+}
+
+.inspectorText {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--dsw-alias-text-primary, #1f2933);
+  max-height: 320px;
+  overflow: auto;
+}
+
+.inspectorArtifacts {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inspectorLabel {
+  font-size: 11px;
+  color: var(--dsw-alias-text-tertiary, #6b7280);
+}
+
+.artifactChip {
+  align-self: flex-start;
+  padding: 2px 8px;
+  border: 1px solid var(--dsw-static-blue-300, #93c5fd);
+  border-radius: 10px;
+  background: var(--dsw-static-blue-50, #eff6ff);
+  color: var(--dsw-static-blue-800, #1e40af);
+  font-size: 11px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.inspectorActions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.inspectorInputSeat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+}
+
+.inspectorInputLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--dsw-alias-text-secondary, #374151);
+}
+
+/* The native conversation flow host: the right rail IS the conversation.
+   The flow component owns its scrollport; this box only gives it the rail's
+   flex column space between the decision panes and the composer. */
+.railFlowHost {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Decision cards (workflow proposal / task suggestions / plan results)
+   embedded in the conversation flow, right after the messages. */
+.flowCard {
+  background: var(--dsw-alias-surface, #fff);
+  border: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 8px 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+/* Pending approval card body (inside the shared question-card shell). */
+.approvalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.approvalReason {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--dsw-alias-text-primary, #1f2933);
+}
+
+.approvalMeta {
+  font-size: 11px;
+  color: var(--dsw-alias-text-tertiary, #6b7280);
+}
+
+/* The native composer bar hosted at the right rail's foot (canvas view). */
+.railComposer {
+  margin-top: auto;
+  padding: 8px 10px 10px;
+  border-top: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  background: var(--dsw-alias-surface, #fff);
+}
+
+.action {
+  padding: 5px 12px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 999px;
+  background: var(--dsw-alias-surface, #fff);
+  color: var(--dsw-alias-text-primary, #1f2933);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.action:hover {
+  background: var(--dsw-alias-fill-subtle, #f1f5f9);
+}
+
+.actionPrimary {
+  padding: 5px 12px;
+  border: 1px solid var(--dsw-static-blue-500, #3b82f6);
+  border-radius: 999px;
+  background: var(--dsw-static-blue-500, #3b82f6);
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.actionPrimary:hover {
+  filter: brightness(1.1);
+}
+
+.actionDanger {
+  padding: 5px 12px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 999px;
+  background: var(--dsw-alias-surface, #fff);
+  color: var(--dsw-static-red-600, #dc2626);
+  font-size: 12px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.actionDanger:hover {
+  background: var(--dsw-static-red-50, #fef2f2);
+}
+
+/* ---- input pane ---- */
+.inputText {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--dsw-static-blue-300, #93c5fd);
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.inputRow {
+  display: flex;
+  gap: 6px;
+}
+
+.inputSelect {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: inherit;
+  background: var(--dsw-alias-surface, #fff);
+}
+
+.inputCustom {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--dsw-alias-border, #d1d5db);
+  border-radius: 6px;
+  font-size: 12px;
+  font-family: inherit;
+}
+
+.inputNote {
+  font-size: 11px;
+  color: var(--dsw-alias-text-tertiary, #94a3b8);
+}
+
+/* ---- suggestion review pane ---- */
+.suggestNote {
+  font-size: 11px;
+  color: var(--dsw-alias-text-secondary, #374151);
+  line-height: 1.5;
+}
+
+.suggestList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.suggestItem {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 8px;
+  border: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  border-radius: 8px;
+  background: var(--dsw-alias-fill-subtle, #f8fafc);
+}
+
+.suggestCheck {
+  margin-top: 4px;
+}
+
+.suggestBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.suggestTitleInput {
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: inherit;
+  color: var(--dsw-alias-text-primary, #1f2933);
+  background: transparent;
+}
+
+.suggestTitleInput:hover,
+.suggestTitleInput:focus {
+  border-color: var(--dsw-alias-border, #d1d5db);
+  background: var(--dsw-alias-surface, #fff);
+}
+
+.suggestDetail {
+  font-size: 11px;
+  color: var(--dsw-alias-text-tertiary, #94a3b8);
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.suggestActions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.suggestFoot {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.suggestFoot .action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---- workflow review pane ---- */
+.workflowNodes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.workflowNode {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 10px;
+  border: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  border-radius: 8px;
+  background: var(--dsw-alias-surface, #fff);
+}
+
+.workflowNodeIndex {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--dsw-static-blue-500, #3b82f6);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.workflowNodeTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dsw-alias-text-primary, #1f2933);
+}
+
+.workflowNodeDeps {
+  font-size: 10px;
+  color: var(--dsw-static-blue-700, #1d4ed8);
+}
+
+.workflowScheduleRow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.workflowScheduleRow .inputCustom {
+  flex: 1;
+}
+
+/* Waiting-for-input banner in the rail: amber, with the per-run input box. */
+.railWaiting {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--dsw-static-amber-300, #fcd34d);
+  background: var(--dsw-static-amber-50, #fffbeb);
+}
+
+.railWaitingText {
+  font-size: 12px;
+  color: var(--dsw-static-amber-900, #78350f);
+  line-height: 1.5;
+}
+
+/* Workflow results list: one realized step's output per row. */
+.resultItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--dsw-alias-border-subtle, #e5e7eb);
+  border-radius: 8px;
+  background: var(--dsw-alias-surface, #fff);
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.resultItem:hover {
+  background: var(--dsw-alias-fill-subtle, #f1f5f9);
+}
+
+.resultModifyHint {
+  font-size: 10px;
+  color: var(--dsw-static-blue-700, #1d4ed8);
+}
+
+.renameButton {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 11px;
+  color: var(--dsw-static-blue-500, #4176e6);
+  padding: 0;
+}
+
+.renameRow {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.renameInput {
+  width: 140px;
+  padding: 3px 6px;
+  border: 1px solid var(--dsw-static-blue-300, #93c5fd);
+  border-radius: 6px;
+  font-size: 11px;
+  font-family: inherit;
+}
+
+.error {
+  padding: 16px;
+  color: var(--dsw-static-red-600, #b91c1c);
+  font-size: 13px;
+  white-space: pre-wrap;
+}
