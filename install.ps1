@@ -104,8 +104,7 @@ try {
   # The sessions service grew openRail (the canvas rail's fork view — open a
   # conversation window without switching the workspace selection); its client
   # bundle must carry the method or the canvas fork-to-rail throws.
-  & pnpm --filter @deepseek-ai/dsh-client-runtime exec tsdown
-  & pnpm --filter @deepseek-ai/dsh-client-ui-canvas bundle
+& pnpm --filter @deepseek-ai/dsh-client-ui-canvas bundle
   & pnpm --filter @deepseek-ai/dsh-client-ui-conversation bundle
   & pnpm --filter @deepseek-ai/dsh-client-ui-model-selection bundle
 

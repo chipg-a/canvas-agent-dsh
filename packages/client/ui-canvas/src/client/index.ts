@@ -7,7 +7,8 @@
  */
 
 import type { Context } from '@deepseek-ai/cordis'
-import type { SessionId, UseProjection } from '@deepseek-ai/dsh-client-runtime/client'
+import type { SessionId } from '@deepseek-ai/dsh-session/types'
+import type { UseProjection } from '@deepseek-ai/dsh-client-store'
 // Type-only: pulls the 'conversation.view' SlotMap row and the ConvViewProps
 // standard props, plus the assembled Remote namespaces (canvasTrees included
 // through the api-remotes client assembly) into the program.

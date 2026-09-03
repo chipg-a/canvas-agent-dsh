@@ -12,7 +12,7 @@
 import { useEffect, useMemo, useRef, useSyncExternalStore } from 'react'
 import type { PropsLocale } from '@deepseek-ai/dsh-client-ui-slots'
 import type { ImageAttachmentRef } from '@deepseek-ai/dsh-attachment'
-import type { ConversationSnapshot, SessionId } from '@deepseek-ai/dsh-client-runtime/client'
+import type { ConversationSnapshot, SessionId } from '@deepseek-ai/dsh-api-session-controller/client'
 import type { MarkdownFileMentions } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { ChatViewSlotProps, TurnTailOwnerProps } from '../contract/slots.ts'
 import { ChatNodeSeat } from './ChatNodeSeat.tsx'

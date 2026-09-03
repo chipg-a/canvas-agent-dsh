@@ -164,11 +164,7 @@
 
     - id: api-remotes
       name: '@deepseek-ai/dsh-api-remotes'
-
-    - id: client-runtime
-      name: '@deepseek-ai/dsh-client-runtime'
-
-    - id: cordis-client-runner
+- id: cordis-client-runner
       name: '@deepseek-ai/dsh-cordis-client-runner'
 
     - id: ui-theme
